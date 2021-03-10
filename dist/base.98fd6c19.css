@@ -1,0 +1,379 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 18px;
+}
+
+body {
+	margin: 0;
+	--color-text: #fff;
+	--color-bg: #000;
+	--color-link: #fff;
+	--color-link-hover: #fff;
+	--color-frame: #ff5ba4;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: rucksack, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+	position: relative;
+}
+
+a::after {
+	content: '';
+	position: absolute;
+	width: 50%;
+	height: 1px;
+	background: currentColor;
+	left: 0;
+	bottom: -25%;
+	transform: scale3d(0,1,1);
+	opacity: 0;
+	transform-origin: 0% 50%;
+	transition: transform 0.3s, opacity 0s 0.3s;
+}
+
+a:hover::after {
+	opacity: 1;
+	transition: transform 0.3s;
+	transform: scale3d(1,1,1);
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.frame {
+	padding: 3rem 5vw;
+	text-align: center;
+	position: relative;
+	z-index: 1000;
+	color: var(--color-frame);
+}
+
+.frame a {
+	color: var(--color-frame);
+}
+
+.frame__title {
+	font-size: 1.25rem;
+	margin: 0 0 1rem;
+}
+
+.frame__title span {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0;
+}
+
+.frame__links {
+	display: inline;
+}
+
+.frame__links a:not(:last-child),
+.frame__demos a:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.frame__demos {
+	margin: 1rem 0;
+}
+
+a.frame__demo--current,
+a.frame__demo--current:hover {
+	color: var(--color-text);
+}
+
+.slideshow {
+	width: 100vw;
+	height: calc(100vh - 13rem);
+	position: relative;
+	overflow: hidden;
+}
+
+.slide {
+	margin: 0;
+}
+
+.slide,
+.slide__img-wrap,
+.slide__img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.js .slide {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.js .slide--current {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.slide__img-wrap {
+	will-change: transform;
+	overflow: hidden;
+}
+
+.slide__img {
+	background-size: cover;
+	will-change: transform;
+	-webkit-backspace-visibility: hidden;
+}
+
+.slide__caption {
+	position: relative;
+	padding: 0 10vw;
+	cursor: default;
+	width: 100%;
+}
+
+.slides__caption-headline {
+	font-size: 6.5vw;
+	font-size: clamp(2rem,6.5vw,6rem);
+	line-height: 0.9;
+	margin: 0;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+.text-row {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	white-space: nowrap;
+}
+
+.text-row > span {
+	display: block;
+	position: relative;
+	padding: 0.5rem 0;
+}
+
+.slides__caption-headline {
+	font-weight: 300;
+}
+
+.slides__caption-headline em,
+.slides__caption-headline strong {
+	font-family: freight-big-pro, serif;
+	font-size: 6.75vw;
+	font-size: clamp(2rem,7vw,6rem);
+}
+
+.slides__caption-headline em {
+	font-weight: 400;
+	font-style: italic;
+}
+
+.slides__caption-headline strong {
+	font-weight: 400;
+}
+
+.slides__caption-link {
+	display: inline-block;
+	margin-top: 1rem;
+	text-indent: 0.2vw;
+	font-size: 1.75rem;
+	font-weight: 300;
+	font-size: clamp(1rem, 5vw, 1.75rem);
+}
+
+.slides-nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.slides-nav__button {
+	display: block;
+	cursor: pointer;
+	background: none;
+	border: 0;
+	width: 55px;
+	height: 24px;
+	padding: 0;
+	margin: 0 0.75rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.slides-nav__button:focus {
+	outline: none;
+}
+
+.slides-nav svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	fill: #fff;
+}
+
+.slides-nav__index {
+	margin-left: 2rem;
+	white-space: nowrap;
+	color: var(--color-text);
+	border: 1px solid var(--color-text);
+	border-radius: 50%;
+	padding: 1rem 1.5rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.slides-nav__index > span {
+	width: 2rem;
+}
+
+.slides-nav__index-current {
+	position: relative;
+	overflow: hidden;
+}
+
+.slides-nav__index-current span {
+	display: inline-block;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		position: fixed;
+		text-align: left;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		display: grid;
+		align-content: space-between;
+		width: 100%;
+		max-width: none;
+		height: 100vh;
+		padding: 2rem 3.5rem;
+		pointer-events: none;
+		grid-template-columns: 25% 50% 25%;
+		grid-template-rows: auto auto auto;
+		grid-template-areas: 'title links info'
+							'... ... ...'
+							'demos demos nav';
+	}
+	.frame__title {
+		margin: 0;
+		grid-area: title;
+	}
+	.frame__demos {
+		margin: 0;
+		grid-area: demos;
+		justify-self: start;
+		align-self: end;
+	}
+	.frame__links {
+		grid-area: links;
+		padding: 0;
+		justify-self: center;
+	}
+	.frame__info {
+		grid-area: info;
+		justify-self: end;
+   		align-self: start;
+	}
+	.slides-nav {
+		grid-area: nav;
+		justify-self: end;
+		align-self: end;
+	}
+	.frame a,
+	.frame button {
+		pointer-events: auto;
+	}
+	.slideshow {
+		height: 100vh;
+	}
+	.slides-nav {
+		margin-bottom: -1rem;
+	}
+	.slides-nav__index {
+		margin-right: -2rem;
+	}
+	.slideshow {
+		background: var(--color-bg);
+	}
+
+}

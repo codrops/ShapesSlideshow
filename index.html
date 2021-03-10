@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Shapes Slideshow | Demo 1 | Codrops</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="https://use.typekit.net/gpd2hso.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+	</head>
+	<body class="demo-1">
+		<main>
+			<div class="frame">
+				<h1 class="frame__title">Mooz</h1>
+				<nav class="frame__links">
+					<a href="#">About</a>
+					<a href="#">Pricing</a>
+					<a href="#">Docs</a>
+				</nav>
+				<button class="frame__info">Info</button>
+				<nav class="frame__demos">
+					<a href="index.html" class="frame__demo frame__demo--current">demo 1</a>
+					<a href="index2.html" class="frame__demo">demo 2</a>
+				</nav>
+				<nav class="slides-nav">
+					<button class="slides-nav__button slides-nav__button--prev" aria-label="Previous slide">&larr;</button>
+					<button class="slides-nav__button slides-nav__button--next" aria-label="Next slide">&rarr;</button>
+					<div class="slides-nav__index">
+						<span class="slides-nav__index-current"><span>01</span></span>-
+						<span class="slides-nav__index-total"><span>10</span></span>
+					</div>
+				</nav>
+			</div>
+			<div class="slideshow">
+				<figure class="slide slide--current">
+					<div class="slide__img-wrap"><div class="slide__img" style="background-image: url(img/1.jpg)"></div></div>
+					<figcaption class="slide__caption">
+						<h2 class="slides__caption-headline">
+							<span class="text-row"><span>Temptation,</span></span>
+							<span class="text-row"><span>a <em>desire</em> to <strong>engage</strong></span></span>
+						</h2>
+						<a class="slides__caption-link" href="#"><span>Explore</span></a>
+					</figcaption>
+				</figure>
+				<figure class="slide">
+					<div class="slide__img-wrap"><div class="slide__img" style="background-image: url(img/2.jpg)"></div></div>
+					<figcaption class="slide__caption">
+						<h2 class="slides__caption-headline">
+							<span class="text-row"><span>Heartful</span></span>
+							<span class="text-row"><span>when <em>hiraeth</em> begins</span></span>
+						</h2>
+						<a class="slides__caption-link" href="#"><span>Explore</span></a>
+					</figcaption>
+				</figure>
+				<figure class="slide">
+					<div class="slide__img-wrap"><div class="slide__img" style="background-image: url(img/3.jpg)"></div></div>
+					<figcaption class="slide__caption">
+						<h2 class="slides__caption-headline">
+							<span class="text-row"><span>Somnambulist</span></span>
+							<span class="text-row"><span><strong>Whenever</strong> you <em>dream</em></span></span>
+						</h2>
+						<a class="slides__caption-link" href="#"><span>Explore</span></a>
+					</figcaption>
+				</figure>
+				<figure class="slide">
+					<div class="slide__img-wrap"><div class="slide__img" style="background-image: url(img/4.jpg)"></div></div>
+					<figcaption class="slide__caption">
+						<h2 class="slides__caption-headline">
+							<span class="text-row"><span>Supernova</span></span>
+							<span class="text-row"><span>for she <strong>resurrected</strong></span></span>
+						</h2>
+						<a class="slides__caption-link" href="#"><span>Explore</span></a>
+					</figcaption>
+				</figure>
+				<figure class="slide">
+					<div class="slide__img-wrap"><div class="slide__img" style="background-image: url(img/5.jpg)"></div></div>
+					<figcaption class="slide__caption">
+						<h2 class="slides__caption-headline">
+							<span class="text-row"><span>Heartfelt</span></span>
+							<span class="text-row"><span>in good <strong>company</strong></span></span>
+						</h2>
+						<a class="slides__caption-link" href="#"><span>Explore</span></a>
+					</figcaption>
+				</figure>
+			</div>
+		</main>
+		<!--script src="https://tympanus.net/codrops/adpacks/cda.js"></script-->
+		<!-- 
+			- When navigating, animate clip-path: ellipse(100% 100% at 50% 50%); to  clip-path: ellipse(10% 35% at 50% 50%); on the .slide__img-wrap element and transform how you like on the .slide__img child
+			- put the next/previous slide translated to the right (100%) / left (-100%) and set opacity to 1 and animate in, with clip-path: ellipse(10% 35% at 50% 50%) applied to it. Then animate the clip path to ellipse(100% 100% at 50% 50%) when you move it in.
+			- .text-row > span is the text elements to move up/down with the overflow hidden thing
+			- when all animations are done, remove .slide--current from previous slide and set to the new one. (This is for pointer events)
+
+
+			Try the following clip paths:
+
+			from: inset(0% 0% 0% 0% round 0vw)
+			to: inset(20% 40% 20% 40% round 25vw) or inset(10% 3% 10% 3% round 1vw)
+
+			from: polygon(100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%, 0 0);
+			to: polygon(75% 10%, 90% 50%, 75% 90%, 10% 90%, 20% 50%, 10% 10%);
+
+
+			from: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+			to: polygon(35% 33%, 61% 28%, 74% 55%, 30% 73%);
+
+
+
+
+		-->
+	</body>
+</html>
