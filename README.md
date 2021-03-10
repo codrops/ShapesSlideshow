@@ -6,7 +6,7 @@ An experimental slideshow using clip-path to create shape transitions between sl
 
 [Article on Codrops](https://tympanus.net/codrops/?p=53694)
 
-[Demo](http://tympanus.net/Development/ShapeSlideshow/)
+[Demo](https://tympanus.net/Development/ShapesSlideshow/)
 
 
 ## Installation
